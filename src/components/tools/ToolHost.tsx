@@ -43,6 +43,8 @@ import { WireSizeEstimator } from './solar/WireSizeEstimator';
 import { UnitConverter } from './unit/UnitConverter';
 import { ImageTools } from './image/ImageTools';
 import { DonationSection } from '../common/DonationSection';
+import { FeedbackCard } from '../common/FeedbackCard';
+import { SocialMediaSection } from '../common/SocialMediaSection';
 
 interface ToolHostProps {
   tool: ToolDefinition;
@@ -126,9 +128,17 @@ export const ToolHost: React.FC<ToolHostProps> = ({ tool, onBack, onSelectCatego
       case 'image-convert':
         return <ImageTools />;
 
-      // Donation
+      // Donation & Feedback
       case 'buy-me-a-coffee':
         return <DonationSection />;
+
+      case 'feedback':
+        return (
+          <div className="space-y-6">
+            <FeedbackCard />
+            <SocialMediaSection />
+          </div>
+        );
 
       default:
         return (

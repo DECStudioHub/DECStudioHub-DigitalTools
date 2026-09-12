@@ -1,6 +1,8 @@
 import React from 'react';
 import { CopyButton } from './CopyButton';
 import { Heart, Coffee, ShieldCheck, Sparkles, ExternalLink } from 'lucide-react';
+import { FeedbackCard } from './FeedbackCard';
+import { SocialMediaSection } from './SocialMediaSection';
 
 export const DonationSection: React.FC = () => {
   return (
@@ -106,6 +108,12 @@ export const DonationSection: React.FC = () => {
           All DECStudioHub utilities execute 100% on client-side browsers with no intrusive analytics, telemetry, or account sign-in requirements. Maraming salamat sa inyong suporta!
         </div>
       </div>
+
+      {/* Suggestion / Feedback banner */}
+      <FeedbackCard />
+
+      {/* Official Social Media links */}
+      <SocialMediaSection />
     </div>
   );
 };

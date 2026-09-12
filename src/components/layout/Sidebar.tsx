@@ -1,8 +1,18 @@
 import React, { useState } from 'react';
 import { CATEGORIES, TOOLS } from '../../data/toolsData';
+import { SOCIAL_LINKS } from '../../data/socialLinks';
 import { ToolDefinition } from '../../types';
 import { IconRenderer } from '../common/IconRenderer';
-import { LayoutDashboard, ChevronDown, ChevronRight, X, Heart } from 'lucide-react';
+import {
+  LayoutDashboard,
+  ChevronDown,
+  ChevronRight,
+  X,
+  Coffee,
+  MessageSquare,
+  Globe,
+  ExternalLink,
+} from 'lucide-react';
 
 interface SidebarProps {
   isOpen: boolean;
@@ -223,8 +233,37 @@ export const Sidebar: React.FC<SidebarProps> = ({
           })}
         </div>
 
-        {/* Sidebar Footer */}
-        <div className="p-3 border-t border-slate-800 bg-[#070b13]">
+        {/* Sidebar Support Section */}
+        <div className="p-3 border-t border-slate-800 bg-[#070b13] space-y-2">
+          <div className="px-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+            Support
+          </div>
+
+          {/* 💬 Suggestion / Feedback Button/Link */}
+          <a
+            href="https://www.facebook.com/tuxcustodio"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={onClose}
+            className="w-full flex items-center justify-between p-2.5 rounded-xl bg-[#111827] hover:bg-[#162137] border border-slate-800 hover:border-blue-500/50 text-left transition group"
+          >
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="p-1.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition shrink-0">
+                <MessageSquare className="w-3.5 h-3.5" />
+              </div>
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-white block group-hover:text-blue-300 transition truncate">
+                  💬 Suggestion / Feedback
+                </span>
+                <span className="text-[10px] text-slate-400 block truncate">
+                  Please message us on our Facebook Page.
+                </span>
+              </div>
+            </div>
+            <ExternalLink className="w-3 h-3 text-slate-500 group-hover:text-blue-400 shrink-0 ml-1" />
+          </a>
+
+          {/* ☕ Buy Me a Coffee */}
           <button
             onClick={() => {
               const donationTool = TOOLS.find((t) => t.id === 'buy-me-a-coffee');
@@ -233,19 +272,43 @@ export const Sidebar: React.FC<SidebarProps> = ({
             }}
             className="w-full p-2.5 rounded-xl bg-gradient-to-r from-rose-500/10 to-amber-500/10 border border-rose-500/20 hover:border-rose-500/40 text-left transition group flex items-center justify-between"
           >
-            <div className="flex items-center gap-2.5">
-              <div className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400">
-                <Heart className="w-4 h-4 fill-rose-400" />
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="p-1.5 rounded-lg bg-rose-500/20 text-rose-400 shrink-0">
+                <Coffee className="w-3.5 h-3.5" />
               </div>
-              <div>
-                <span className="text-xs font-bold text-white block group-hover:text-rose-300 transition">
-                  Buy Me a Coffee
+              <div className="min-w-0">
+                <span className="text-xs font-bold text-white block group-hover:text-rose-300 transition truncate">
+                  ☕ Buy Me a Coffee
                 </span>
-                <span className="text-[10px] text-slate-400">GCash / PayPal Support</span>
+                <span className="text-[10px] text-slate-400 block truncate">
+                  GCash / PayPal Support
+                </span>
               </div>
             </div>
             <span className="text-xs text-slate-400 group-hover:text-white transition">→</span>
           </button>
+
+          {/* 🌐 Follow DECStudioHub */}
+          <div className="rounded-xl bg-[#0f1523] border border-slate-800/80 p-2 space-y-1.5">
+            <div className="flex items-center gap-1.5 px-1 text-[11px] font-semibold text-slate-300">
+              <Globe className="w-3.5 h-3.5 text-indigo-400" />
+              <span>🌐 Follow DECStudioHub</span>
+            </div>
+            <div className="flex items-center justify-between gap-1 pt-1 border-t border-slate-800/60">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${s.name}: ${s.handle}`}
+                  className="p-1.5 rounded-lg bg-[#151c2d] hover:bg-slate-700 text-slate-400 hover:text-white transition flex items-center justify-center flex-1"
+                >
+                  <IconRenderer icon={s.icon} className="w-3.5 h-3.5" />
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </aside>
     </>

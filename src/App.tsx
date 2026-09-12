@@ -6,6 +6,9 @@ import { CategoryView } from './components/dashboard/CategoryView';
 import { ToolHost } from './components/tools/ToolHost';
 import { GlobalSearchModal } from './components/dashboard/GlobalSearchModal';
 import { TOOLS, CATEGORIES } from './data/toolsData';
+import { SOCIAL_LINKS } from './data/socialLinks';
+import { IconRenderer } from './components/common/IconRenderer';
+import { MessageSquare, ExternalLink } from 'lucide-react';
 import { ToolDefinition, Category } from './types';
 
 export default function App() {
@@ -136,26 +139,64 @@ export default function App() {
         </main>
 
         {/* Footer */}
-        <footer className="border-t border-slate-800/80 bg-[#070a12] py-8 px-4 lg:px-8 mt-auto">
-          <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-white">DECStudioHub</span>
-              <span>— Your Everyday Digital Toolbox</span>
+        <footer className="border-t border-slate-800/80 bg-[#070a12] py-8 px-4 lg:px-8 mt-auto space-y-6">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="space-y-1 text-center md:text-left">
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <span className="font-extrabold text-sm text-white tracking-tight">DECStudioHub</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 font-mono">
+                  v1.0
+                </span>
+              </div>
+              <p className="text-xs text-slate-400">
+                Your Everyday Digital Toolbox — 100% Client-Side, Private & Fast
+              </p>
             </div>
 
-            <div className="flex items-center gap-4 text-[11px] font-mono">
-              <span>Client-Side Local Architecture</span>
-              <span>•</span>
+            {/* Quick Action Buttons */}
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              <a
+                href="https://www.facebook.com/tuxcustodio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-blue-600/10 hover:bg-blue-600/20 border border-blue-500/30 hover:border-blue-500 text-blue-300 hover:text-white text-xs font-semibold transition"
+              >
+                <MessageSquare className="w-3.5 h-3.5 text-blue-400" />
+                <span>💬 Suggestion / Feedback</span>
+                <ExternalLink className="w-3 h-3 opacity-70" />
+              </a>
+
               <button
                 onClick={() => {
                   const coffee = TOOLS.find((t) => t.id === 'buy-me-a-coffee');
                   if (coffee) handleSelectTool(coffee);
                 }}
-                className="text-slate-400 hover:text-white transition underline"
+                className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 hover:border-rose-500 text-rose-300 hover:text-white text-xs font-semibold transition"
               >
-                GCash / PayPal Support
+                <span>☕ Buy Me a Coffee</span>
               </button>
             </div>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-2">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.id}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={`${s.name}: ${s.handle}`}
+                  className="p-2 rounded-xl bg-[#0f1523] border border-slate-800 text-slate-400 hover:text-white hover:border-slate-600 transition flex items-center justify-center"
+                >
+                  <IconRenderer icon={s.icon} className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <div className="max-w-7xl mx-auto pt-4 border-t border-slate-800/50 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-400 font-mono">
+            <span>Client-Side Local Processing • No Analytics Tracking</span>
+            <span>Please message us on our Facebook Page for suggestions or feedback.</span>
           </div>
         </footer>
       </div>

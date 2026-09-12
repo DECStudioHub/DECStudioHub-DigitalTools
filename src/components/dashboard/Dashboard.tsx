@@ -3,6 +3,8 @@ import { CATEGORIES, TOOLS } from '../../data/toolsData';
 import { ToolDefinition } from '../../types';
 import { IconRenderer } from '../common/IconRenderer';
 import { Search, Sparkles, ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react';
+import { FeedbackCard } from '../common/FeedbackCard';
+import { SocialMediaSection } from '../common/SocialMediaSection';
 
 interface DashboardProps {
   onSelectTool: (tool: ToolDefinition) => void;
@@ -231,6 +233,12 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
         );
       })}
+
+      {/* Suggestion / Feedback Section */}
+      <FeedbackCard />
+
+      {/* Social Media Section */}
+      <SocialMediaSection />
 
       {/* Footer Trust Bar */}
       <div className="rounded-2xl bg-[#111827] border border-slate-800 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">

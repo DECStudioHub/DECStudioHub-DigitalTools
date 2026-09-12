@@ -401,7 +401,7 @@ export const TOOLS: ToolDefinition[] = [
   },
 
   // ==========================================
-  // DONATION
+  // DONATION & FEEDBACK
   // ==========================================
   {
     id: 'buy-me-a-coffee',
@@ -411,6 +411,16 @@ export const TOOLS: ToolDefinition[] = [
     description: 'Support DECStudioHub. Help keep this digital toolbox free, ad-free, fast, and continuously updated.',
     tags: ['coffee', 'donate', 'support', 'gcash', 'paypal', 'contribution'],
     popular: false,
-    icon: 'Heart',
+    icon: 'Coffee',
+  },
+  {
+    id: 'feedback',
+    categoryId: 'donation',
+    name: 'Suggestion / Feedback',
+    shortDescription: 'Please message us on our Facebook Page for suggestions, feedback, bug reports, or feature requests.',
+    description: 'Please message us on our Facebook Page for suggestions, feedback, bug reports, or feature requests.',
+    tags: ['feedback', 'suggestion', 'feature request', 'bug report', 'contact', 'facebook', 'message'],
+    popular: false,
+    icon: 'MessageSquare',
   },
 ];
